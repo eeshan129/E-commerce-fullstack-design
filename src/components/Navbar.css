@@ -1,0 +1,111 @@
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5c31f5;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-search {
+  flex: 1;
+  display: flex;
+  max-width: 400px;
+}
+
+.navbar-search input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.navbar-search input:focus { border-color: #5c31f5; }
+
+.navbar-search button {
+  padding: 0.5rem 0.9rem;
+  background: #5c31f5;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.navbar-links a:hover { color: #5c31f5; }
+
+.cart-link { display: flex; align-items: center; gap: 4px; position: relative; }
+
+.cart-badge {
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.navbar-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .navbar-hamburger { display: block; }
+  .navbar-search { display: none; }
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0; right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-left: 0;
+  }
+  .navbar-links.open { display: flex; }
+}
