@@ -4,13 +4,16 @@ const cors = require('cors');
 require('dotenv').config();
 
 const productRoutes = require('./routes/products');
+const authRoutes    = require('./routes/auth');
 
 const app = express();
 
-app.use(cors());           
-app.use(express.json());  
+app.use(cors());
+app.use(express.json());
 
+// Routes
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);       // ← new
 
 app.get('/', (req, res) => {
   res.json({ message: 'MyShop API is running!' });

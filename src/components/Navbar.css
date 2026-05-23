@@ -14,98 +14,190 @@
   height: 64px;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  position: relative;
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #5c31f5;
   text-decoration: none;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
+/* ── Search bar — only visible on desktop ── */
 .navbar-search {
   flex: 1;
   display: flex;
-  max-width: 400px;
+  max-width: 380px;
 }
 
 .navbar-search input {
   flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.9rem;
   border: 1px solid #d1d5db;
   border-right: none;
   border-radius: 8px 0 0 8px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   outline: none;
+  min-width: 0;
+  transition: border-color 0.2s;
 }
 
 .navbar-search input:focus { border-color: #5c31f5; }
 
 .navbar-search button {
-  padding: 0.5rem 0.9rem;
+  padding: 0.45rem 0.8rem;
   background: #5c31f5;
   color: white;
   border: none;
   border-radius: 0 8px 8px 0;
   cursor: pointer;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: background 0.2s;
 }
 
+.navbar-search button:hover { background: #4521d4; }
+
+/* ── Nav links — desktop row ── */
 .navbar-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: center;
+  margin: 0;
+  padding: 0;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .navbar-links a {
   text-decoration: none;
   color: #374151;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: color 0.2s;
 }
 
 .navbar-links a:hover { color: #5c31f5; }
 
-.cart-link { display: flex; align-items: center; gap: 4px; position: relative; }
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
 
 .cart-badge {
   background: #ef4444;
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  font-size: 0.65rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
 }
 
+/* ── Auth items ── */
+.admin-link {
+  color: #f59e0b !important;
+  font-weight: 700 !important;
+}
+
+.login-link {
+  background: #5c31f5;
+  color: white !important;
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.user-name {
+  color: #374151;
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background: none;
+  border: 2px solid #e5e7eb;
+  color: #374151;
+  border-radius: 8px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+/* ── Hamburger — hidden on desktop ── */
 .navbar-hamburger {
   display: none;
   background: none;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  margin-left: auto;
+  color: #374151;
+  padding: 4px 8px;
+  flex-shrink: 0;
 }
 
+/* ────────────────────────────────────────
+   MOBILE  (≤ 768px)
+──────────────────────────────────────── */
 @media (max-width: 768px) {
-  .navbar-hamburger { display: block; }
+  .navbar-container {
+    height: 56px;
+    padding: 0 1rem;
+    flex-wrap: nowrap;
+  }
+
+  /* Hide search on mobile — user searches via the hamburger menu */
   .navbar-search { display: none; }
+
+  /* Show hamburger */
+  .navbar-hamburger { display: block; margin-left: auto; }
+
+  /* Nav links become a dropdown panel */
   .navbar-links {
     display: none;
     position: absolute;
-    top: 64px;
-    left: 0; right: 0;
+    top: 56px;
+    left: 0;
+    right: 0;
     background: #fff;
     flex-direction: column;
-    padding: 1rem 1.5rem;
+    align-items: flex-start;
+    padding: 0.75rem 1.25rem 1rem;
     border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    gap: 0.75rem;
     margin-left: 0;
   }
+
   .navbar-links.open { display: flex; }
+
+  /* Each link full width */
+  .navbar-links li { width: 100%; }
+  .navbar-links a  { font-size: 1rem; display: block; }
+
+  .user-menu { flex-direction: row; width: 100%; justify-content: space-between; }
 }
